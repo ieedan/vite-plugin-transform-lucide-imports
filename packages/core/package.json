@@ -3,12 +3,17 @@
 	"version": "0.0.0",
 	"description": "Core package for vite-plugin-transform-lucide-imports",
 	"type": "module",
+	"types": "dist/index.d.ts",
+	"module": "dist/index.mjs",
 	"exports": {
 		".": {
 			"import": "./dist/index.mjs",
 			"types": "./dist/index.d.ts"
 		}
 	},
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"build": "unbuild",
 		"dev": "unbuild --watch"
@@ -21,7 +26,8 @@
 		"vite": "^5.0.0 || ^6.0.0 || ^7.0.0"
 	},
 	"devDependencies": {
-		"unbuild": "catalog:"
+		"unbuild": "catalog:",
+		"vite": "^7.1.5"
 	},
 	"dependencies": {
 		"@sveltejs/acorn-typescript": "^1.0.5",
