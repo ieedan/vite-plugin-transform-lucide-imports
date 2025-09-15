@@ -2,7 +2,25 @@ import { type Node, walk } from "estree-walker";
 import MagicString from "magic-string";
 import { Parser } from "acorn";
 import { tsPlugin } from "@sveltejs/acorn-typescript";
-import { normalizeName } from "./utils";
+import { normalizeName, startsWithLowercase } from "./utils";
+
+type LucidePackage = {
+	name: string;
+};
+
+const LUCIDE_PACKAGES: LucidePackage[] = [
+	{ name: "lucide" },
+	{ name: "lucide-react" },
+	{ name: "lucide-vue-next" },
+	{ name: "lucide-react-native" },
+	{ name: "lucide-svelte" },
+	{ name: "@lucide/svelte" },
+	{ name: "lucide-angular" },
+	{ name: "lucide-solid" },
+	{ name: "lucide-static" },
+	{ name: "lucide-preact" },
+	{ name: "@lucide/astro" },
+];
 
 export function transform(code: string): string {
 	const program = Parser.extend(tsPlugin()).parse(code, {
@@ -33,19 +51,29 @@ export function transform(code: string): string {
 }
 
 function transformImports(path: string, { node, s }: { node: any; s: MagicString }) {
-	if (!path.startsWith("@lucide/svelte")) return;
+	// we sort by length to make sure we find the longest matching package
+	const lucidePackage = LUCIDE_PACKAGES.sort((a, b) => b.name.length - a.name.length).find((pkg) =>
+		path.startsWith(pkg.name)
+	);
+	if (!lucidePackage) return;
 	if (node.specifiers.length === 1 && node.specifiers[0].type === "ImportDefaultSpecifier") {
 		return;
 	}
 
-	const transformableImports: { original: string; new: string; node: Node }[] = [];
+	const transformableImports: { original: string; new: string; node: any }[] = [];
 
-	const typedImports: { original: string; node: Node }[] = [];
+	const remainingImports: { original: string; node: any }[] = [];
 
 	for (const specifier of node.specifiers) {
 		if (specifier.type === "ImportSpecifier") {
 			if (specifier.importKind === "type") {
-				typedImports.push({
+				remainingImports.push({
+					original: specifier.imported.name,
+					node: specifier,
+				});
+				// "Icon" and camelCase imports are reserved and not transformable
+			} else if (startsWithLowercase(specifier.imported.name) || specifier.imported.name === "Icon") {
+				remainingImports.push({
 					original: specifier.imported.name,
 					node: specifier,
 				});
@@ -59,17 +87,29 @@ function transformImports(path: string, { node, s }: { node: any; s: MagicString
 		}
 	}
 
-	if (typedImports.length === 0) {
+	if (remainingImports.length === 0) {
 		s.remove(node.start, node.end);
 	} else {
-		s.replace(
-			s.slice(node.start, node.end),
-			`import type { ${typedImports.map(({ original }) => original).join(", ")} } from '@lucide/svelte';`
-		);
+		// type only imports remaining
+		if (remainingImports.filter(({ node }) => node.importKind !== "type").length === 0) {
+			s.replace(
+				s.slice(node.start, node.end),
+				`import type { ${remainingImports.map(({ original }) => original).join(", ")} } from '${
+					lucidePackage.name
+				}';`
+			);
+		} else {
+			s.replace(
+				s.slice(node.start, node.end),
+				`import { ${remainingImports
+					.map(({ original, node }) => (node.importKind === "type" ? `type ${original}` : original))
+					.join(", ")} } from '${lucidePackage.name}';`
+			);
+		}
 	}
 
 	for (const { original, new: newName } of transformableImports) {
-		const newImport = `\nimport ${newName} from '@lucide/svelte/icons/${normalizeName(original)}';`;
+		const newImport = `\nimport ${newName} from '${lucidePackage.name}/icons/${normalizeName(original)}';`;
 		s.appendLeft(node.end, newImport);
 	}
 }

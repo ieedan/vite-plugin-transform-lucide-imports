@@ -6,8 +6,8 @@
 	"packageManager": "pnpm@10.4.1",
 	"type": "module",
 	"scripts": {
-		"build": "pnpm --parallel build",
-		"dev": "pnpm --parallel dev",
+		"build": "pnpm --r build",
+		"dev": "pnpm --r dev",
 		"lint": "biome lint --write",
 		"format": "biome format --write",
 		"check": "biome check && tsc --noEmit",

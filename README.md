@@ -19,15 +19,13 @@ export default defineConfig({
 });
 ```
 
-Named lucide imports have long been the cause of slow dev server performance. This plugin transforms them into default imports, which are much faster to resolve.
-
-### Before
+**Before**
 
 ```ts
 import { BarIcon, Foo, Baz as Baz2Icon, type XIcon } from "@lucide/svelte";
 ```
 
-### After
+**After**
 
 ```ts
 import type { XIcon } from "@lucide/svelte";
@@ -36,7 +34,25 @@ import Foo from "@lucide/svelte/icons/foo";
 import Baz2Icon from "@lucide/svelte/icons/baz";
 ```
 
-## Svelte
+## Why use this plugin?
+
+Named lucide imports have long been the cause of slow dev server performance. This plugin transforms them into default imports, which are much faster to resolve. 
+
+### Why not just use default imports?
+
+Named imports have a few advantages over default imports:
+- Better autocomplete
+- Less verbose
+- LLMs love to use named imports
+
+## Supported frameworks
+
+- Svelte
+- Vanilla JS
+
+> Feel free to contribute a plugin for your framework!
+
+### Svelte
 
 For Svelte use the `@vite-plugin-transform-lucide-imports/svelte` package.
 

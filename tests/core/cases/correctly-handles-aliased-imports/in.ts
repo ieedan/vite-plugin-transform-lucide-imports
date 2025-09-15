@@ -1,1 +1,1 @@
-import { BarIcon as LucideBarIcon } from '@lucide/svelte';
+import { BarIcon as LucideBarIcon } from 'lucide';

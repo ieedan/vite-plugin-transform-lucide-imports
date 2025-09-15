@@ -1,2 +1,2 @@
 
-import LucideBarIcon from '@lucide/svelte/icons/bar';
+import LucideBarIcon from 'lucide/icons/bar';

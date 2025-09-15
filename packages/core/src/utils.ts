@@ -54,3 +54,9 @@ function isLetter(char: string): boolean {
 
 	return LETTER_REGEX.test(char);
 }
+
+export function startsWithLowercase(str: string): boolean {
+	if (str.length === 0) return false;
+
+	return isLetter(str[0]) && str[0].toLowerCase() === str[0];
+}

@@ -6,7 +6,7 @@ export const SUPPORTED_EXTENSIONS = [".svelte"];
 
 export const plugin = (): Plugin => {
 	return {
-		name: "vite-plugin-transform-lucide-imports",
+		name: "@vite-plugin-transform-lucide-imports/svelte",
 		transform: async (code, fileName) => {
 			if (CORE_SUPPORTED_EXTENSIONS.some((ext) => fileName.endsWith(ext))) {
 				return transform(code);
