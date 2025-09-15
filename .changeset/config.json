@@ -10,6 +10,6 @@
 	"access": "public",
 	"baseBranch": "main",
 	"updateInternalDependencies": "patch",
-	"ignore": [],
+	"ignore": ["@vite-plugin-transform-lucide-imports/tests"],
 	"prettier": false
 }

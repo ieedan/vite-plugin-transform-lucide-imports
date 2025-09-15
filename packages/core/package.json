@@ -18,9 +18,19 @@
 		"build": "unbuild",
 		"dev": "unbuild --watch"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
+	"author": {
+		"name": "Aidan Bleser",
+		"url": "https://github.com/ieedan"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ieedan/vite-plugin-transform-lucide-imports.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ieedan/vite-plugin-transform-lucide-imports/issues"
+	},
+	"keywords": ["lucide", "transform", "imports"],
+	"license": "MIT",
 	"packageManager": "pnpm@10.4.1",
 	"peerDependencies": {
 		"vite": "^5.0.0 || ^6.0.0 || ^7.0.0"
