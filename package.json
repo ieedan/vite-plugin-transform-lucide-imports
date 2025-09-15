@@ -1,0 +1,30 @@
+{
+	"name": "@vite-plugin-transform-lucide-imports/monorepo",
+	"description": "A Vite plugin to transform Lucide imports.",
+	"version": "0.0.0",
+	"license": "MIT",
+	"packageManager": "pnpm@10.4.1",
+	"type": "module",
+	"scripts": {
+		"build": "pnpm --parallel build",
+		"dev": "pnpm --parallel dev",
+		"lint": "biome lint --write",
+		"format": "biome format --write",
+		"check": "biome check && tsc --noEmit",
+		"test": "pnpm -F @vite-plugin-transform-lucide-imports/tests test",
+		"changeset-version": "changeset version && pnpm format",
+		"ci:release": "pnpm build && changeset publish"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.2.4",
+		"@changesets/cli": "^2.29.7",
+		"@svitejs/changesets-changelog-github-compact": "^1.2.0",
+		"@types/node": "^24.4.0",
+		"typescript": "^5.9.2"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild"
+		]
+	}
+}

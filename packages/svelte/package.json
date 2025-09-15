@@ -1,0 +1,30 @@
+{
+	"name": "@vite-plugin-transform-lucide-imports/svelte",
+	"version": "0.0.0",
+	"description": "Svelte package for vite-plugin-transform-lucide-imports",
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"types": "./dist/index.d.ts"
+		}
+	},
+	"scripts": {
+		"build": "unbuild",
+		"dev": "unbuild --watch"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.4.1",
+	"devDependencies": {
+		"unbuild": "catalog:"
+	},
+	"peerDependencies": {
+		"svelte": "^5.0.0",
+		"vite": "^7.0.0"
+	},
+	"dependencies": {
+		"vite-plugin-transform-lucide-imports": "workspace:*"
+	}
+}

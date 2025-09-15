@@ -1,0 +1,32 @@
+{
+	"name": "vite-plugin-transform-lucide-imports",
+	"version": "0.0.0",
+	"description": "Core package for vite-plugin-transform-lucide-imports",
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"types": "./dist/index.d.ts"
+		}
+	},
+	"scripts": {
+		"build": "unbuild",
+		"dev": "unbuild --watch"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.4.1",
+	"peerDependencies": {
+		"vite": "^7.0.0"
+	},
+	"devDependencies": {
+		"unbuild": "catalog:"
+	},
+	"dependencies": {
+		"@sveltejs/acorn-typescript": "^1.0.5",
+		"acorn": "^8.15.0",
+		"estree-walker": "^3.0.3",
+		"magic-string": "^0.30.19"
+	}
+}

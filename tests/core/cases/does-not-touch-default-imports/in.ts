@@ -1,0 +1,1 @@
+import TrafficLightIcon from '@lucide/svelte/icons/traffic-light';
