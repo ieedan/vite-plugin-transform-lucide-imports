@@ -1,0 +1,8 @@
+packages:
+    - packages/*
+    - tests
+    - www
+
+catalog:
+    unbuild: ^3.5.0
+    vitest: ^3.2.4

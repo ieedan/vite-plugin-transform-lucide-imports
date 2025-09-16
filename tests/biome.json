@@ -1,0 +1,7 @@
+{
+	"root": false,
+	"extends": "//",
+	"files": {
+		"includes": ["!core/cases/**/*.ts", "!svelte/cases/**/*.svelte"]
+	}
+}
