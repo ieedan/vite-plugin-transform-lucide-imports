@@ -4,9 +4,5 @@ import { defineConfig } from "vite";
 import transformLucideImports from "@vite-plugin-transform-lucide-imports/svelte";
 
 export default defineConfig({
-	plugins: [
-		tailwindcss(),
-		transformLucideImports(),
-		sveltekit()
-	]
+	plugins: [tailwindcss(), transformLucideImports(), sveltekit()],
 });
