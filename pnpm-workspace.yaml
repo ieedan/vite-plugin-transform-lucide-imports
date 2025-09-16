@@ -1,6 +1,7 @@
 packages:
     - packages/*
     - tests
+    - www
 
 catalog:
     unbuild: ^3.5.0

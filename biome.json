@@ -9,6 +9,9 @@
 		"lineWidth": 100,
 		"attributePosition": "auto"
 	},
+	"files": {
+		"includes": ["packages/**/*", "tests/**/*", "!www/**/*"]
+	},
 	"linter": {
 		"enabled": true,
 		"rules": {
