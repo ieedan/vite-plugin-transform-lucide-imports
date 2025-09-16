@@ -3,8 +3,5 @@ import { defineConfig } from "vite";
 import transformLucideImports from "@vite-plugin-transform-lucide-imports/svelte";
 
 export default defineConfig({
-	plugins: [
-		transformLucideImports(), 
-		sveltekit()
-	],
+	plugins: [transformLucideImports(), sveltekit()],
 });
