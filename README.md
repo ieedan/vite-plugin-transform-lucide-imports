@@ -34,6 +34,9 @@ import Foo from "@lucide/svelte/icons/foo";
 import Baz2Icon from "@lucide/svelte/icons/baz";
 ```
 
+video here
+
+
 ## Why use this plugin?
 
 Named lucide imports have long been the cause of slow dev server performance. This plugin transforms them into default imports, which are much faster to resolve. 
