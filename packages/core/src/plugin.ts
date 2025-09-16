@@ -5,7 +5,7 @@ export const SUPPORTED_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx", ".mjs"];
 
 export const plugin = (): Plugin => ({
 	name: "transform-lucide-imports",
-	enforce: "pre",
+	enforce: 'pre',
 	async transform(code, fileName) {
 		if (!SUPPORTED_EXTENSIONS.some((ext) => fileName.endsWith(ext))) return {};
 

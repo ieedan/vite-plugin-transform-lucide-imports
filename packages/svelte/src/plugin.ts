@@ -6,7 +6,7 @@ export const SUPPORTED_EXTENSIONS = [".svelte"];
 
 export const plugin = (): Plugin => ({
 	name: "transform-lucide-imports",
-	enforce: "pre",
+	enforce: 'pre',
 	async transform(code, fileName) {
 		if (CORE_SUPPORTED_EXTENSIONS.some((ext) => fileName.endsWith(ext))) {
 			return { code: coreTransform(code) };

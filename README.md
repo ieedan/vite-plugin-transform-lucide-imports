@@ -58,9 +58,10 @@ For Svelte use the `@vite-plugin-transform-lucide-imports/svelte` package.
 
 ```ts
 import { defineConfig } from "vite";
+import { sveltekit } from '@sveltejs/kit/vite';
 import transformLucideImports from "@vite-plugin-transform-lucide-imports/svelte";
 
 export default defineConfig({
-	plugins: [transformLucideImports()],
+	plugins: [transformLucideImports(), sveltekit()],
 });
 ```
