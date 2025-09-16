@@ -34,8 +34,7 @@ import Foo from "@lucide/svelte/icons/foo";
 import Baz2Icon from "@lucide/svelte/icons/baz";
 ```
 
-video here
-
+https://github.com/user-attachments/assets/c2692f80-e8f6-4cb8-942d-8c109db49b5b
 
 ## Why use this plugin?
 
