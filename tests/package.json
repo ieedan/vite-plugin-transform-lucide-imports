@@ -11,7 +11,9 @@
 	"packageManager": "pnpm@10.4.1",
 	"dependencies": {
 		"vitest": "catalog:",
-		"vite-plugin-transform-lucide-imports": "workspace:*",
-		"@vite-plugin-transform-lucide-imports/svelte": "workspace:*"
+		"vite-plugin-transform-lucide-imports": "workspace:*"
+	},
+	"devDependencies": {
+		"@types/node": "catalog:"
 	}
 }

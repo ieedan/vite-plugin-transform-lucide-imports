@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { normalizeName } from "../packages/core/dist/index.mjs";
+import { normalizeName } from "vite-plugin-transform-lucide-imports";
 
 describe("normalizeName", () => {
 	it("should properly normalize pascal case names", () => {

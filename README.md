@@ -38,32 +38,17 @@ https://github.com/user-attachments/assets/c2692f80-e8f6-4cb8-942d-8c109db49b5b
 
 ## Why use this plugin?
 
-Named lucide imports have long been the cause of slow dev server performance. This plugin transforms them into default imports, which are much faster to resolve. 
+Named lucide imports have long been the cause of slow dev server performance. This plugin transforms them into default imports, which are much faster to resolve.
 
 ### Why not just use default imports?
 
 Named imports have a few advantages over default imports:
-- Better autocomplete
-- Less verbose
-- LLMs love to use named imports
+
+-   Better autocomplete
+-   Less verbose
+-   LLMs love to use named imports
 
 ## Supported frameworks
 
-- Svelte
-- Vanilla JS
-
-> Feel free to contribute a plugin for your framework!
-
-### Svelte
-
-For Svelte use the `@vite-plugin-transform-lucide-imports/svelte` package.
-
-```ts
-import { defineConfig } from "vite";
-import { sveltekit } from '@sveltejs/kit/vite';
-import transformLucideImports from "@vite-plugin-transform-lucide-imports/svelte";
-
-export default defineConfig({
-	plugins: [transformLucideImports(), sveltekit()],
-});
-```
+-   Svelte
+-   Vanilla JS
