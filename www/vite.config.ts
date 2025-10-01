@@ -1,8 +1,8 @@
 import tailwindcss from "@tailwindcss/vite";
 import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig } from "vite";
-import transformLucideImports from "@vite-plugin-transform-lucide-imports/svelte";
+import transformLucideImports from "vite-plugin-transform-lucide-imports";
 
 export default defineConfig({
-	plugins: [tailwindcss(), transformLucideImports(), sveltekit()],
+	plugins: [tailwindcss(), sveltekit(), transformLucideImports()],
 });
