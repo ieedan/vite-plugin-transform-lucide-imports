@@ -3,7 +3,7 @@
 	"description": "A Vite plugin to transform Lucide imports.",
 	"version": "0.0.0",
 	"license": "MIT",
-	"packageManager": "pnpm@10.4.1",
+	"packageManager": "pnpm@10.17.1",
 	"type": "module",
 	"scripts": {
 		"build": "pnpm --r build",
@@ -13,13 +13,14 @@
 		"check": "biome check && tsc --noEmit",
 		"test": "pnpm -F @vite-plugin-transform-lucide-imports/tests test",
 		"changeset-version": "changeset version && pnpm format",
-		"ci:release": "pnpm build && changeset publish"
+		"ci:release": "pnpm build && changeset publish",
+		"postinstall": "pnpm build:core",
+		"build:core": "pnpm -F vite-plugin-transform-lucide-imports build"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.2.4",
 		"@changesets/cli": "^2.29.7",
 		"@svitejs/changesets-changelog-github-compact": "^1.2.0",
-		"@types/node": "^24.4.0",
 		"typescript": "^5.9.2"
 	},
 	"pnpm": {
