@@ -50,5 +50,6 @@ Named imports have a few advantages over default imports:
 
 ## Supported frameworks
 
--   Svelte
+-   Svelte (This plugin **MUST** be added *AFTER* the SvelteKit plugin in the plugins array)
+-   React
 -   Vanilla JS
