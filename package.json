@@ -14,7 +14,8 @@
 		"test": "pnpm -F @vite-plugin-transform-lucide-imports/tests test",
 		"changeset-version": "changeset version && pnpm format",
 		"ci:release": "pnpm build && changeset publish",
-		"postinstall": "pnpm -F vite-plugin-transform-lucide-imports build"
+		"postinstall": "pnpm build:core",
+		"build:core": "pnpm -F vite-plugin-transform-lucide-imports build"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.2.4",
