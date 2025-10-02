@@ -1,6 +1,6 @@
 import { type Node, walk } from "estree-walker";
 import MagicString from "magic-string";
-import { Parser } from "acorn";
+import { Parser, Program } from "acorn";
 import { tsPlugin } from "@sveltejs/acorn-typescript";
 import { normalizeName, startsWithLowercase } from "./utils";
 
@@ -22,12 +22,18 @@ const LUCIDE_PACKAGES: LucidePackage[] = [
 	{ name: "@lucide/astro" },
 ];
 
-export function transform(code: string): string {
-	const program = Parser.extend(tsPlugin()).parse(code, {
-		sourceType: "module",
-		ecmaVersion: "latest",
-		locations: true,
-	});
+export function transform(code: string, { warn }: { warn?: (message: string) => void } = {}): string | undefined {
+	let program: Program;
+	try {
+		program = Parser.extend(tsPlugin()).parse(code, {
+			sourceType: "module",
+			ecmaVersion: "latest",
+			locations: true,
+		});
+	} catch (err) {
+		warn?.(`Could not parse file Error: ${err instanceof Error ? err.message : String(err)}`);
+		return;
+	}
 
 	const s = new MagicString(code);
 
