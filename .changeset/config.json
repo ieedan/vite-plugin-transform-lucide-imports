@@ -9,5 +9,6 @@
 	"linked": [],
 	"access": "public",
 	"baseBranch": "main",
+	"ignore": ["@vite-plugin-transform-lucide-imports/tests", "@vite-plugin-transform-lucide-imports/www"],
 	"prettier": false
 }
