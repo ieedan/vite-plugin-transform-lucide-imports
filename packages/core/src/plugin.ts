@@ -15,12 +15,14 @@ export type Options = {
 	 * 	plugins: [
 	 * 		transformLucideImports(
 	 * 			{
-	 * 				extensions: [...SUPPORTED_EXTENSIONS, ".svelte"] 
+	 * 				extensions: [...SUPPORTED_EXTENSIONS, ".vue"] 
 	 * 			}
 	 * 		),
 	 * 	],
 	 * });
 	 * ```
+	 * 
+	 * @default [ ".ts", ".tsx", ".js", ".jsx", ".mjs", ".svelte" ]
 	 */
 	extensions?: string[];
 };
