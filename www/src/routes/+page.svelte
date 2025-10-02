@@ -29,14 +29,6 @@
                         <CodeXml class="size-3.5"/>
                    </a>
                 </li>
-                <li class="flex place-items-center gap-1">
-                    <a href="https://npmjs.com/package/@vite-plugin-transform-lucide-imports/svelte">
-                        @vite-plugin-transform-lucide-imports/svelte
-                    </a>
-                    <a href="https://github.com/ieedan/vite-plugin-transform-lucide-imports/tree/main/packages/svelte">
-                        <CodeXml class="size-3.5"/>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
