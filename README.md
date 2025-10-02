@@ -15,7 +15,7 @@ import { defineConfig } from "vite";
 import transformLucideImports from "vite-plugin-transform-lucide-imports";
 
 export default defineConfig({
-	plugins: [transformLucideImports()],
+	plugins: [/* other framework plugins */, transformLucideImports()],
 });
 ```
 
@@ -60,13 +60,13 @@ For frameworks that transpile to a valid JS / JSX syntax you can just pass your 
 
 ```ts
 import { defineConfig } from "vite";
-import { sveltekit } from "@sveltejs/kit/vite";
+import vue from "@vitejs/plugin-vue";
 import transformLucideImports, { SUPPORTED_EXTENSIONS } from "vite-plugin-transform-lucide-imports";
 
 export default defineConfig({
 	// the plugin MUST be added after the plugin doing the transpilation
 	// you may also want to spread the supported extensions to continue to support other extensions
-	plugins: [sveltekit(), transformLucideImports({ extensions: [...SUPPORTED_EXTENSIONS, ".svelte"] })],
+	plugins: [vue(), transformLucideImports({ extensions: [...SUPPORTED_EXTENSIONS, ".vue"] })],
 });
 ```
 
