@@ -1,5 +1,6 @@
 {
 	"name": "@vite-plugin-transform-lucide-imports/tests",
+	"private": true,
 	"version": "0.0.0",
 	"description": "Tests for @vite-plugin-transform-lucide-imports",
 	"scripts": {
