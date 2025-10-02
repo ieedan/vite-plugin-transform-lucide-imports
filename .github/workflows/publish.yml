@@ -12,17 +12,20 @@ jobs:
         permissions:
             contents: write # to create release (changesets/action)
             pull-requests: write # to create pull request (changesets/action)
-            deployments: write
             id-token: write # Required for OIDC
         name: Build & Publish Release
         runs-on: ubuntu-latest
 
         steps:
             - uses: actions/checkout@v4
-            - uses: pnpm/action-setup@v4
-            - uses: actions/setup-node@v3
               with:
-                  node-version: '20'
+                # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+                fetch-depth: 0
+            - uses: pnpm/action-setup@v4
+            - uses: actions/setup-node@v4
+              with:
+                node-version: 24
+                cache: 'pnpm'
 
             - run: npm install -g npm@latest
 
