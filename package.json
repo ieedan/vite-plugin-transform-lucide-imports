@@ -21,7 +21,7 @@
 		"@biomejs/biome": "2.2.4",
 		"@changesets/cli": "^2.29.7",
 		"@svitejs/changesets-changelog-github-compact": "^1.2.0",
-		"typescript": "^5.9.2"
+		"typescript": "^5.9.3"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
