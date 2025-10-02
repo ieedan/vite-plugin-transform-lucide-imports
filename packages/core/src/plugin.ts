@@ -4,12 +4,29 @@ import { transform as coreTransform } from "./transform";
 export const SUPPORTED_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx", ".mjs", ".svelte"];
 
 export type Options = {
-	/** Additional file extensions to support. */
+	/**
+	 * Override the supported file extensions.
+	 * @example
+	 * ```ts
+	 * import { defineConfig } from "vite";
+	 * import transformLucideImports, { SUPPORTED_EXTENSIONS } from "vite-plugin-transform-lucide-imports";
+	 *
+	 * export default defineConfig({
+	 * 	plugins: [
+	 * 		transformLucideImports(
+	 * 			{
+	 * 				extensions: [...SUPPORTED_EXTENSIONS, ".svelte"] 
+	 * 			}
+	 * 		),
+	 * 	],
+	 * });
+	 * ```
+	 */
 	extensions?: string[];
 };
 
 export const plugin = (options?: Options): Plugin => {
-	const extensions = [...(options?.extensions ?? []), ...SUPPORTED_EXTENSIONS];
+	const extensions = options?.extensions ?? SUPPORTED_EXTENSIONS;
 	return {
 		name: "transform-lucide-imports",
 		transform(code, fileName) {
