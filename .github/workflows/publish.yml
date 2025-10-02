@@ -24,6 +24,8 @@ jobs:
               with:
                   node-version: '20'
 
+            - run: npm install -g npm@latest
+
             - name: Install dependencies
               run: pnpm install
 
