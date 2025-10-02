@@ -7,7 +7,7 @@
 	"type": "module",
 	"scripts": {
 		"build": "pnpm --r build",
-		"dev": "pnpm --r dev",
+		"dev": "pnpm --r --parallel dev",
 		"lint": "biome lint --write",
 		"format": "biome format --write",
 		"check": "biome check && tsc --noEmit",

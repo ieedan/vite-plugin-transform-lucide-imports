@@ -4,10 +4,10 @@
 	"description": "Core package for vite-plugin-transform-lucide-imports",
 	"type": "module",
 	"types": "dist/index.d.ts",
-	"module": "dist/index.mjs",
+	"module": "dist/index.js",
 	"exports": {
 		".": {
-			"import": "./dist/index.mjs",
+			"import": "./dist/index.js",
 			"types": "./dist/index.d.ts"
 		}
 	},
@@ -15,8 +15,8 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "unbuild",
-		"dev": "unbuild --watch"
+		"build": "tsup",
+		"dev": "tsup --watch"
 	},
 	"author": {
 		"name": "Aidan Bleser",
