@@ -1,5 +1,17 @@
 # vite-plugin-transform-lucide-imports
 
+## 0.2.0
+### Minor Changes
+
+
+- fix: ensure we don't try to optimize tree-shaken packages ([#11](https://github.com/ieedan/vite-plugin-transform-lucide-imports/pull/11))
+
+
+### Patch Changes
+
+
+- fix: Ensure aliased icons named i.e. `LucideBarIcon` are handled ([#11](https://github.com/ieedan/vite-plugin-transform-lucide-imports/pull/11))
+
 ## 0.1.1
 ### Patch Changes
 
