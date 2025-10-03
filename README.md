@@ -15,7 +15,7 @@ import { defineConfig } from "vite";
 import transformLucideImports from "vite-plugin-transform-lucide-imports";
 
 export default defineConfig({
-	plugins: [/* other framework plugins */ transformLucideImports()],
+	plugins: [/* other framework plugins */, transformLucideImports()],
 });
 ```
 
