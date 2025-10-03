@@ -6,19 +6,22 @@ import { normalizeName, startsWithLowercase } from "./utils";
 
 type LucidePackage = {
 	name: string;
+	/** These packages are already tree shaken and using this plugin will only break things */
+	treeShaken?: boolean;
 };
 
 const LUCIDE_PACKAGES: LucidePackage[] = [
-	{ name: "lucide" },
-	{ name: "lucide-react" },
+	{ name: "lucide", treeShaken: true },
+	{ name: "lucide-react", treeShaken: true },
+	{ name: "lucide-vue", treeShaken: true },
 	{ name: "lucide-vue-next" },
 	{ name: "lucide-react-native" },
 	{ name: "lucide-svelte" },
 	{ name: "@lucide/svelte" },
-	{ name: "lucide-angular" },
+	{ name: "lucide-angular", treeShaken: true },
 	{ name: "lucide-solid" },
 	{ name: "lucide-static" },
-	{ name: "lucide-preact" },
+	{ name: "lucide-preact", treeShaken: true },
 	{ name: "@lucide/astro" },
 ];
 
@@ -40,7 +43,7 @@ export function transform(code: string, { warn }: { warn?: (message: string) => 
 	const enter = (node: Node) => {
 		if (node.type === "ImportDeclaration") {
 			if (typeof node.source?.value === "string") {
-				transformImports(node.source.value, { node, s });
+				transformImports(node.source.value, { node, s, warn });
 			}
 		} else if (node.type === "ImportExpression") {
 			if (node.source.type === "Literal" && typeof node.source.value === "string") {
@@ -56,12 +59,21 @@ export function transform(code: string, { warn }: { warn?: (message: string) => 
 	return s.toString();
 }
 
-function transformImports(path: string, { node, s }: { node: any; s: MagicString }) {
+function transformImports(
+	path: string,
+	{ node, s, warn }: { node: any; s: MagicString; warn?: (message: string) => void }
+) {
 	// we sort by length to make sure we find the longest matching package
 	const lucidePackage = LUCIDE_PACKAGES.sort((a, b) => b.name.length - a.name.length).find((pkg) =>
 		path.startsWith(pkg.name)
 	);
 	if (!lucidePackage) return;
+	if (lucidePackage.treeShaken) {
+		warn?.(
+			`Skipping optimization of ${path} because ${lucidePackage.name} is already a tree shaken package`
+		);
+		return;
+	}
 	if (node.specifiers.length === 1 && node.specifiers[0].type === "ImportDefaultSpecifier") {
 		return;
 	}
