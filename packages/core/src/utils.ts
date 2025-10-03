@@ -7,17 +7,24 @@
  * normalizeName("FooBarIcon") // "foo-bar"
  * normalizeName("FooBar2") // "foo-bar-2"
  * normalizeName("FooBar2Icon") // "foo-bar-2"
+ * normalizeName("LucideBar") // "bar"
+ * normalizeName("LucideBar2") // "bar-2"
  * ```
  *
  * @param name
  * @returns
  */
 export function normalizeName(name: string) {
+	let trimmedName = name;
 	if (name.endsWith("Icon")) {
-		return pascalToKebab(name.slice(0, -4));
+		trimmedName = trimmedName.slice(0, -4);
 	}
 
-	return pascalToKebab(name);
+	if (name.startsWith("Lucide")) {
+		trimmedName = trimmedName.slice(6);
+	}
+
+	return pascalToKebab(trimmedName);
 }
 
 function pascalToKebab(str: string): string {

@@ -1,2 +1,2 @@
-import type { XIcon } from 'lucide';
-import BarIcon from 'lucide/icons/bar';
+import type { XIcon } from '@lucide/svelte';
+import BarIcon from '@lucide/svelte/icons/bar';

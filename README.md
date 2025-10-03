@@ -22,19 +22,23 @@ export default defineConfig({
 **Before**
 
 ```ts
-import { BarIcon, Foo, Baz as Baz2Icon, type XIcon } from "lucide";
+import { LucideFizzIcon, BarIcon, Foo, Baz as Baz2Icon, type XIcon } from "lucide-react-native";
 ```
 
 **After**
 
 ```ts
-import type { XIcon } from "lucide";
-import BarIcon from "lucide/icons/bar";
-import Foo from "lucide/icons/foo";
-import Baz2Icon from "lucide/icons/baz";
+import type { XIcon } from "lucide-react-native";
+import LucideFizzIcon from "lucide-react-native";
+import BarIcon from "lucide-react-native/icons/bar";
+import Foo from "lucide-react-native/icons/foo";
+import Baz2Icon from "lucide-react-native/icons/baz";
 ```
 
 https://github.com/user-attachments/assets/c2692f80-e8f6-4cb8-942d-8c109db49b5b
+
+> [!NOTE]
+> If you are using any of the following lucide packages [lucide](https://npmjs.com/package/lucide), [lucide-react](https://npmjs.com/package/lucide-react), [lucide-vue](https://npmjs.com/package/lucide-vue), [lucide-vue-next](https://npmjs.com/package/lucide-vue-next), [lucide-angular](https://npmjs.com/package/lucide-angular), [lucide-preact](https://npmjs.com/package/lucide-preact) they already support tree shaking and this plugin won't be necessary.
 
 ## Why use this plugin?
 
