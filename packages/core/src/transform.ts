@@ -69,9 +69,7 @@ function transformImports(
 	);
 	if (!lucidePackage) return;
 	if (lucidePackage.treeShaken) {
-		warn?.(
-			`Skipping optimization of ${path} because ${lucidePackage.name} is already a tree shaken package`
-		);
+		warn?.(`Skipping optimization of ${path} because ${lucidePackage.name} is already a tree shaken package`);
 		return;
 	}
 	if (node.specifiers.length === 1 && node.specifiers[0].type === "ImportDefaultSpecifier") {

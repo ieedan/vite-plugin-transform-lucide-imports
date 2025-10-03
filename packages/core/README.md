@@ -15,23 +15,24 @@ import { defineConfig } from "vite";
 import transformLucideImports from "vite-plugin-transform-lucide-imports";
 
 export default defineConfig({
-	plugins: [/* other framework plugins */, transformLucideImports()],
+	plugins: [/* other framework plugins */ transformLucideImports()],
 });
 ```
 
 **Before**
 
 ```ts
-import { BarIcon, Foo, Baz as Baz2Icon, type XIcon } from "lucide";
+import { LucideFizzIcon, BarIcon, Foo, Baz as Baz2Icon, type XIcon } from "lucide-react-native";
 ```
 
 **After**
 
 ```ts
-import type { XIcon } from "lucide";
-import BarIcon from "lucide/icons/bar";
-import Foo from "lucide/icons/foo";
-import Baz2Icon from "lucide/icons/baz";
+import type { XIcon } from "lucide-react-native";
+import LucideFizzIcon from "lucide-react-native";
+import BarIcon from "lucide-react-native/icons/bar";
+import Foo from "lucide-react-native/icons/foo";
+import Baz2Icon from "lucide-react-native/icons/baz";
 ```
 
 https://github.com/user-attachments/assets/c2692f80-e8f6-4cb8-942d-8c109db49b5b

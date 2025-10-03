@@ -11,4 +11,14 @@ describe("normalizeName", () => {
 		expect(normalizeName("FooBarIcon")).toBe("foo-bar");
 		expect(normalizeName("FooBar2Icon")).toBe("foo-bar-2");
 	});
+
+	it("should remove Lucide prefix and normalize the name", () => {
+		expect(normalizeName("LucideFooBar")).toBe("foo-bar");
+		expect(normalizeName("LucideFooBar2")).toBe("foo-bar-2");
+	});
+
+	it("should handle multiple prefixes and suffixes", () => {
+		expect(normalizeName("LucideFooBarIcon")).toBe("foo-bar");
+		expect(normalizeName("LucideFooBar2Icon")).toBe("foo-bar-2");
+	});
 });
