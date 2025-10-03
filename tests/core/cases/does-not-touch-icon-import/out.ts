@@ -1,1 +1,1 @@
-import { Icon } from 'lucide-react';
+import { Icon } from '@lucide/svelte';

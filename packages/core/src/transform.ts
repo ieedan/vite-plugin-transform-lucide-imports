@@ -14,7 +14,7 @@ const LUCIDE_PACKAGES: LucidePackage[] = [
 	{ name: "lucide", treeShaken: true },
 	{ name: "lucide-react", treeShaken: true },
 	{ name: "lucide-vue", treeShaken: true },
-	{ name: "lucide-vue-next" },
+	{ name: "lucide-vue-next", treeShaken: true },
 	{ name: "lucide-react-native" },
 	{ name: "lucide-svelte" },
 	{ name: "@lucide/svelte" },

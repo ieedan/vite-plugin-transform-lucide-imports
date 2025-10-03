@@ -1,1 +1,1 @@
-import { BarIcon, type XIcon } from 'lucide';
+import { BarIcon, type XIcon } from '@lucide/svelte';
