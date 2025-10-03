@@ -52,4 +52,12 @@ describe("transform", () => {
 		expect(transformed).toBeUndefined();
 		expect(warn).toHaveBeenCalledOnce();
 	});
+
+	it("should not transform and warn for tree shaken lucide packages", () => {
+		const warn = vi.fn();
+		const code = "import { FooIcon } from 'lucide';";
+		const transformed = transform(code, { warn });
+		expect(transformed).toBe(code);
+		expect(warn).toHaveBeenCalledOnce();
+	});
 });
