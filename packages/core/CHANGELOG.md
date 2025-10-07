@@ -1,5 +1,11 @@
 # vite-plugin-transform-lucide-imports
 
+## 0.3.0
+### Minor Changes
+
+
+- feat: add `onwarn` option ([#14](https://github.com/ieedan/vite-plugin-transform-lucide-imports/pull/14))
+
 ## 0.2.0
 ### Minor Changes
 
