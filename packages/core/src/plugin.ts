@@ -25,6 +25,10 @@ export type Options = {
 	 * @default [ ".ts", ".tsx", ".js", ".jsx", ".mjs", ".svelte" ]
 	 */
 	extensions?: string[];
+	/**
+	 * Custom warning handler. If not provided, the plugin will use Vite's built-in warning system.
+	 */
+	onwarn?: (message: string, handler: (message: string) => void) => void;
 };
 
 export const plugin = (options?: Options): Plugin => {
@@ -36,7 +40,14 @@ export const plugin = (options?: Options): Plugin => {
 
 			return {
 				code: coreTransform(code, {
-					warn: (message: string) => this.warn(message),
+					warn: (message: string) => {
+						if (!options?.onwarn) {
+							this.warn(message);
+						}
+						else {
+							options.onwarn(message, this.warn);
+						}
+					}
 				}),
 			};
 		},
