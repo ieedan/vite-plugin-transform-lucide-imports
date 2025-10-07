@@ -1,6 +1,6 @@
 {
 	"name": "vite-plugin-transform-lucide-imports",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"description": "Core package for vite-plugin-transform-lucide-imports",
 	"type": "module",
 	"types": "dist/index.d.ts",
