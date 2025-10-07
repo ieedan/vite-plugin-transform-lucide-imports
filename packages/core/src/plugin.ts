@@ -45,7 +45,7 @@ export const plugin = (options?: Options): Plugin => {
 							this.warn(message);
 						}
 						else {
-							options.onwarn(message, this.warn);
+							options.onwarn(message, (msg) => this.warn(msg));
 						}
 					}
 				}),
