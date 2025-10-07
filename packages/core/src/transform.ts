@@ -25,7 +25,13 @@ const LUCIDE_PACKAGES: LucidePackage[] = [
 	{ name: "@lucide/astro" },
 ];
 
-export function transform(code: string, { warn }: { warn?: (message: string) => void } = {}): string | undefined {
+export type Warning = {
+	message: string;
+	error?: unknown;
+	meta?: Record<string, unknown>;
+};
+
+export function transform(code: string, { warn }: { warn?: (warning: Warning) => void } = {}): string | undefined {
 	let program: Program;
 	try {
 		program = Parser.extend(tsPlugin()).parse(code, {
@@ -34,7 +40,10 @@ export function transform(code: string, { warn }: { warn?: (message: string) => 
 			locations: true,
 		});
 	} catch (err) {
-		warn?.(`Could not parse file Error: ${err instanceof Error ? err.message : String(err)}`);
+		warn?.({
+			message: `Could not parse file Error: ${err instanceof Error ? err.message : String(err)}`,
+			error: err,
+		});
 		return;
 	}
 
@@ -61,7 +70,7 @@ export function transform(code: string, { warn }: { warn?: (message: string) => 
 
 function transformImports(
 	path: string,
-	{ node, s, warn }: { node: any; s: MagicString; warn?: (message: string) => void }
+	{ node, s, warn }: { node: any; s: MagicString; warn?: (warning: Warning) => void }
 ) {
 	// we sort by length to make sure we find the longest matching package
 	const lucidePackage = LUCIDE_PACKAGES.sort((a, b) => b.name.length - a.name.length).find((pkg) =>
@@ -69,7 +78,13 @@ function transformImports(
 	);
 	if (!lucidePackage) return;
 	if (lucidePackage.treeShaken) {
-		warn?.(`Skipping optimization of ${path} because ${lucidePackage.name} is already a tree shaken package`);
+		warn?.({
+			message: `Skipping optimization of ${path} because ${lucidePackage.name} is already a tree shaken package`,
+			meta: {
+				packageName: lucidePackage.name,
+				path,
+			}
+		});
 		return;
 	}
 	if (node.specifiers.length === 1 && node.specifiers[0].type === "ImportDefaultSpecifier") {

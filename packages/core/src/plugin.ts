@@ -1,5 +1,5 @@
 import type { Plugin } from "vite";
-import { transform as coreTransform } from "./transform";
+import { transform as coreTransform, Warning } from "./transform";
 
 export const SUPPORTED_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx", ".mjs", ".svelte"];
 
@@ -15,20 +15,20 @@ export type Options = {
 	 * 	plugins: [
 	 * 		transformLucideImports(
 	 * 			{
-	 * 				extensions: [...SUPPORTED_EXTENSIONS, ".vue"] 
+	 * 				extensions: [...SUPPORTED_EXTENSIONS, ".vue"]
 	 * 			}
 	 * 		),
 	 * 	],
 	 * });
 	 * ```
-	 * 
+	 *
 	 * @default [ ".ts", ".tsx", ".js", ".jsx", ".mjs", ".svelte" ]
 	 */
 	extensions?: string[];
 	/**
 	 * Custom warning handler. If not provided, the plugin will use Vite's built-in warning system.
 	 */
-	onwarn?: (message: string, handler: (message: string) => void) => void;
+	onwarn?: (warning: Warning, defaultHandler: (msg: string) => void) => void;
 };
 
 export const plugin = (options?: Options): Plugin => {
@@ -40,14 +40,13 @@ export const plugin = (options?: Options): Plugin => {
 
 			return {
 				code: coreTransform(code, {
-					warn: (message: string) => {
+					warn: (warning: Warning) => {
 						if (!options?.onwarn) {
-							this.warn(message);
+							this.warn(warning.message);
+						} else {
+							options.onwarn(warning, (msg) => this.warn(msg));
 						}
-						else {
-							options.onwarn(message, (msg) => this.warn(msg));
-						}
-					}
+					},
 				}),
 			};
 		},
