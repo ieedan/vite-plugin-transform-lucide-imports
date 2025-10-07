@@ -28,7 +28,7 @@ export type Options = {
 	/**
 	 * Custom warning handler. If not provided, the plugin will use Vite's built-in warning system.
 	 */
-	onwarn?: (warning: Warning, defaultHandler: (msg: string) => void) => void;
+	onwarn?: (warning: Warning, defaultHandler: (message: string) => void) => void;
 };
 
 export const plugin = (options?: Options): Plugin => {
