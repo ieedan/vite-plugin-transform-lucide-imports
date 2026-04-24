@@ -1,5 +1,11 @@
 # vite-plugin-transform-lucide-imports
 
+## 0.3.1
+### Patch Changes
+
+
+- chore: allow vite 8 as peer dependency ([#16](https://github.com/ieedan/vite-plugin-transform-lucide-imports/pull/16))
+
 ## 0.3.0
 ### Minor Changes
 
